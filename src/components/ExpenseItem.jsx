@@ -1,17 +1,19 @@
+import { useState } from "react";
+import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 const ExpenseItem = ({ title, price, date }) => {
-  const year = date.getFullYear();
-  const day = date.toLocaleString("ar-EG", { day: "2-digit" });
-  const month = date.toLocaleString("en-US", { month: "long" });
+  const [newTitle, setNewTitle] = useState(title);
+  const updateTitle = () => {
+    console.log(newTitle);
+    setNewTitle("abc");
+    console.log(newTitle);
+  };
   return (
     <div className="expense-item">
-      <div>
-        <div>{month}</div>
-        <div>{year}</div>
-        <div>{day}</div>
-      </div>
+      <ExpenseDate date={date} />
       <div className="expense-item__description">
-        <h2>{title}</h2>
+        <h2>{newTitle}</h2>
+        <button onClick={updateTitle}>Update Title</button>
         <div className="expense-item__price">$ {price}</div>
       </div>
     </div>
