@@ -2,6 +2,7 @@ import "./ExpensesContainer.css";
 import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 import { useState } from "react";
+import Chart from "./Chart/Chart";
 
 const ExpensesContainer = ({ expensesData }) => {
   let years = new Set(expensesData.map((item) => item.date.getFullYear()));
@@ -9,6 +10,11 @@ const ExpensesContainer = ({ expensesData }) => {
   const [filterValue, setFilterValue] = useState(newAr[0]);
 
   // console.log(newAr);
+
+  const filtredExpenses = expensesData.filter((item) => {
+    return item.date.getFullYear() == filterValue;
+  });
+
   return (
     <div className="expenses">
       <ExpensesFilter
@@ -16,7 +22,8 @@ const ExpensesContainer = ({ expensesData }) => {
         val={filterValue}
         trackChanges={setFilterValue}
       />
-      {expensesData.map((expense) => {
+      <Chart />
+      {filtredExpenses.map((expense) => {
         return (
           <ExpenseItem
             // key={expense.id}
