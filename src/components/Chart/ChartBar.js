@@ -1,12 +1,17 @@
 import "./ChartBar.css";
 
-const ChartBar = () => {
+const ChartBar = ({ label, value, max, total }) => {
+  let barFillHeight = "0%";
+  barFillHeight = (value / max) * 100 + "%";
   return (
     <div className="chart-bar">
       <div className="chart-bar__inner">
-        <div className="chart-bar__fill" style={{ height: "0%" }}></div>
+        <div
+          className="chart-bar__fill"
+          style={{ height: barFillHeight }}
+        ></div>
       </div>
-      <div className="chart-bar__label">Abc</div>
+      <div className="chart-bar__label">{label}</div>
     </div>
   );
 };

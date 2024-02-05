@@ -3,6 +3,7 @@ import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 import { useState } from "react";
 import Chart from "./Chart/Chart";
+import ChartData from "./Chart/ChartData";
 
 const ExpensesContainer = ({ expensesData }) => {
   let years = new Set(expensesData.map((item) => item.date.getFullYear()));
@@ -22,7 +23,7 @@ const ExpensesContainer = ({ expensesData }) => {
         val={filterValue}
         trackChanges={setFilterValue}
       />
-      <Chart />
+      <ChartData expenses={filtredExpenses} />
       {filtredExpenses.map((expense) => {
         return (
           <ExpenseItem
