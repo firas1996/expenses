@@ -35,7 +35,7 @@ const AddExpenses = ({ getData }) => {
     getData({
       id: Math.random(),
       title: inputs.title,
-      price: inputs.price,
+      price: +inputs.price,
       date: new Date(inputs.date),
     });
     // setTitle("");
